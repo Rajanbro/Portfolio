@@ -1,5 +1,6 @@
 import React from 'react';
 import { GraduationCap, Target, Award } from 'lucide-react';
+import ProfileImg from '../assets/Rajan_passport.png';
 
 const About: React.FC = () => {
   return (
@@ -18,8 +19,13 @@ const About: React.FC = () => {
           {/* Profile Image Section */}
           <div className="relative">
             <div className="w-80 h-80 mx-auto bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-2xl">
-              <div className="w-72 h-72 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center">
-                <span className="text-8xl font-bold text-gray-400">RK</span>
+              <div className="w-72 h-72 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center overflow-hidden">
+                <img
+                  src={ProfileImg}
+                  alt="Profile"
+                  className="w-full h-full object-cover rounded-full border-4 border-white shadow-lg"
+                  style={{ background: '#fff' }}
+                />
               </div>
             </div>
             <div className="absolute -top-4 -right-4 w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center animate-pulse">
@@ -53,7 +59,10 @@ const About: React.FC = () => {
                       CGPA: 9.1
                     </span>
                     <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-400 rounded-full text-sm font-medium">
-                      1st Year
+                      3rd Year
+                    </span>
+                    <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-400 rounded-full text-sm font-medium">
+                      Linux World Intern
                     </span>
                   </div>
                 </div>

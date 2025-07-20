@@ -6,7 +6,7 @@ const Skills: React.FC = () => {
     {
       title: 'Programming Languages',
       icon: Code,
-      skills: ['Python', 'JavaScript', 'C (DSA)', 'HTML', 'CSS'],
+      skills: ['ML', 'Python', 'Power BI', 'JavaScript', 'C (DSA)', 'HTML', 'CSS'],
       color: 'blue'
     },
     {

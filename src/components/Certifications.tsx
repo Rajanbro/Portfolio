@@ -7,7 +7,7 @@ const Certifications: React.FC = () => {
       title: 'Network Security & DB Vulnerabilities',
       issuer: 'IBM',
       icon: Shield,
-      year: '2024',
+      year: '2025',
       color: 'blue',
       description: 'Comprehensive security training covering network vulnerabilities and database security best practices'
     },
@@ -15,7 +15,7 @@ const Certifications: React.FC = () => {
       title: 'Artificial Intelligence Essentials',
       issuer: 'EXIN BCS',
       icon: Brain,
-      year: '2024',
+      year: '2025',
       color: 'purple',
       description: 'Foundation certification in AI concepts, machine learning, and practical applications'
     },
@@ -23,7 +23,7 @@ const Certifications: React.FC = () => {
       title: 'ChatGPT & AI Tools Mastery',
       issuer: 'be10X Workshop',
       icon: Brain,
-      year: '2024',
+      year: '2025',
       color: 'green',
       description: 'Advanced training in leveraging AI tools for productivity and development workflows'
     },
@@ -31,7 +31,7 @@ const Certifications: React.FC = () => {
       title: 'AI-Powered Autonomous Vehicles',
       issuer: 'Technovation-24',
       icon: Car,
-      year: '2024',
+      year: '2025',
       color: 'orange',
       description: 'Specialized certification in autonomous vehicle technology and AI integration'
     }
@@ -130,7 +130,7 @@ const Certifications: React.FC = () => {
               <div className="text-gray-600 dark:text-gray-400">Certifications</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2">2024</div>
+              <div className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2">2025</div>
               <div className="text-gray-600 dark:text-gray-400">Latest Year</div>
             </div>
             <div>

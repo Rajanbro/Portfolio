@@ -1,5 +1,6 @@
 import React from 'react';
 import { Download, ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
+import ProfileImg from '../assets/Rajan_passport.png';
 
 const Hero: React.FC = () => {
   const scrollToSection = (href: string) => {
@@ -17,16 +18,18 @@ const Hero: React.FC = () => {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="space-y-8">
+        <div className="space-y-8 flex flex-col items-center">
+          {/* Profile Image */}
           {/* Greeting */}
           <div className="animate-fade-in-up">
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
-              Hey, I'm{' '}
+            <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-4 tracking-tight">
               <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                Rajan
-              </span>{' '}
-              <span className="inline-block animate-bounce">👋</span>
+                AI_Enthusiast Rajan Kumawat
+              </span>
             </h1>
+            <div className="mb-6">
+              <span className="text-base md:text-lg font-medium text-blue-200 block">Aspiring MLOps Engineer</span>
+            </div>
             <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
               A future-ready{' '}
               <span className="text-blue-400 font-semibold">AI & DS enthusiast</span>{' '}
@@ -85,9 +88,8 @@ const Hero: React.FC = () => {
           {/* Status Badge */}
           <div className="animate-fade-in-up delay-800">
             <div className="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-green-500/20 to-blue-500/20 backdrop-blur-md rounded-full border border-green-500/30 text-green-300">
-              <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
               <span className="text-sm font-medium">
-                🚀 Actively seeking internships in AI/ML & DevOps – Let's build the future together!
+                Currently doing Internship in Multi-Technology Track via LinuxWorld (Learn & Build)
               </span>
             </div>
           </div>
