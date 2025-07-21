@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { GraduationCap, Target, Award } from 'lucide-react';
+import { Play } from 'lucide-react';
 import ProfileImg from '../assets/Rajan_passport.png';
 
 const About: React.FC = () => {
+  const [showVideo, setShowVideo] = useState(false);
   return (
     <section id="about" className="py-20 bg-gray-50 dark:bg-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -13,7 +15,33 @@ const About: React.FC = () => {
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             Passionate about turning complex data into actionable insights and building intelligent systems
           </p>
+          {/* Intro Button */}
+          <button
+            onClick={() => setShowVideo(true)}
+            className="mt-6 inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold rounded-full shadow transition-all"
+          >
+            <Play className="w-5 h-5 mr-2" />
+            Intro
+          </button>
         </div>
+        {/* Video Modal */}
+        {showVideo && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70">
+            <div className="bg-white rounded-lg shadow-lg p-4 w-full max-w-lg relative">
+              <button
+                onClick={() => setShowVideo(false)}
+                className="absolute top-2 right-2 text-gray-700 hover:text-red-500 text-2xl font-bold"
+                aria-label="Close"
+              >
+                &times;
+              </button>
+              <video controls autoPlay className="w-full max-h-[70vh] rounded-lg">
+                <source src="/Intro Video.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        )}
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Profile Image Section */}
