@@ -12,7 +12,7 @@ import Footer from './components/Footer';
 function App() {
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-white dark:bg-slate-900 transition-colors">
+      <div className="min-h-screen bg-[#0a0a0a] font-['Inter',system-ui,sans-serif] transition-all duration-300">
         <Navigation />
         <Hero />
         <About />

@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Download, ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
-import ProfileImg from '../assets/Rajan_passport.png';
 
 const Hero: React.FC = () => {
   const scrollToSection = (href: string) => {
@@ -11,61 +10,72 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Background Animation */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 dark:from-slate-950 dark:via-blue-950 dark:to-slate-950">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%239C92AC%22 fill-opacity=%220.1%22%3E%3Ccircle cx=%2230%22 cy=%2230%22 r=%221%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
+    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden font-['Inter',system-ui,sans-serif] pt-20" style={{background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%)'}}>
+      {/* Animated background grid */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(0,212,255,0.3)_1px,transparent_0)] bg-[length:50px_50px] animate-pulse"></div>
       </div>
-
+      
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="space-y-8 flex flex-col items-center">
-          {/* Profile Image */}
+        <div className="space-y-12 flex flex-col items-center">
           {/* Greeting */}
           <div className="animate-fade-in-up">
-            <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-4 tracking-tight">
-              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                AI_Enthusiast Rajan Kumawat
-              </span>
+            {/* Main Heading */}
+            <h1
+              className="text-4xl md:text-6xl font-extrabold text-center mb-6 text-white drop-shadow-[0_0_20px_#00d4ff]"
+              style={{
+                letterSpacing: '0.04em',
+                textShadow: '0 0 16px #00d4ff, 0 0 4px #00ff88, 0 0 8px #ffffff',
+                filter: 'drop-shadow(0 0 8px #00d4ff)'
+              }}
+            >
+              RAJAN  KUMAWAT
             </h1>
-            <div className="mb-6">
-              <span className="text-base md:text-lg font-medium text-blue-200 block">Aspiring MLOps Engineer</span>
-            </div>
-            <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+            {/* Removed the non-glowing subtitle to avoid duplication and overlap */}
+            <p className="text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed text-[#b0b0b0] font-medium mt-4 mb-2">
               A future-ready{' '}
-              <span className="text-blue-400 font-semibold">AI & DS enthusiast</span>{' '}
+              <span className="text-[#00d4ff] font-bold drop-shadow-[0_0_10px_rgba(0,212,255,0.5)]">AI & ML enthusiast</span>{' '}
               crafting data-driven solutions with ML, GenAI, and DevOps.
             </p>
           </div>
 
           {/* Subtitle */}
           <div className="animate-fade-in-up delay-200">
-            <p className="text-lg md:text-xl text-gray-400 font-medium">
-              "Turning data into action, models into intelligence."
-            </p>
+            <span
+              className="block text-4xl md:text-6xl font-extrabold text-center mx-auto mb-10 text-white tracking-wide animate-pulse"
+              style={{ 
+                letterSpacing: '0.04em', 
+                textShadow: '0 0 32px #00d4ff, 0 0 16px #00ff88, 0 0 8px #00d4ff, 0 0 4px #ffffff',
+                filter: 'drop-shadow(0 0 20px #00d4ff) drop-shadow(0 0 40px #00d4ff)'
+              }}
+            >
+              Aspiring MLOps Engineer
+            </span>
           </div>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 animate-fade-in-up delay-400">
             <button
               onClick={() => scrollToSection('#projects')}
-              className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center space-x-2"
+              className="group px-10 py-4 bg-gradient-to-r from-[#00d4ff] to-[#00b8e6] text-white font-semibold rounded-lg shadow-[0_8px_32px_rgba(0,212,255,0.3)] hover:shadow-[0_12px_40px_rgba(0,212,255,0.5)] transform hover:scale-105 transition-all duration-300 flex items-center space-x-3 text-lg border border-[#00d4ff]/30 hover:border-[#00d4ff]/60"
             >
               <span>Explore My Work</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
             </button>
-            <button className="group px-8 py-4 bg-white/10 backdrop-blur-md hover:bg-white/20 text-white font-semibold rounded-full border border-white/20 hover:border-white/40 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center space-x-2">
-              <Download className="w-5 h-5 group-hover:animate-bounce" />
+            <button className="group px-10 py-4 bg-transparent border border-[#00d4ff] text-[#00d4ff] font-semibold rounded-lg shadow-[0_8px_32px_rgba(0,212,255,0.1)] hover:shadow-[0_12px_40px_rgba(0,212,255,0.3)] transform hover:scale-105 transition-all duration-300 flex items-center space-x-3 text-lg hover:bg-[#00d4ff] hover:text-white hover:drop-shadow-[0_0_20px_rgba(0,212,255,0.5)]"
+            >
+              <Download className="w-6 h-6 group-hover:animate-bounce" />
               <span>Download Resume</span>
             </button>
           </div>
 
           {/* Social Links */}
-          <div className="flex items-center justify-center space-x-6 animate-fade-in-up delay-600">
+          <div className="flex items-center justify-center space-x-8 animate-fade-in-up delay-600">
             <a
               href="https://github.com/Rajanbro"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 bg-white/10 backdrop-blur-md hover:bg-white/20 rounded-full border border-white/20 hover:border-white/40 text-white hover:scale-110 transition-all duration-300"
+              className="p-4 bg-[#1a1a1a] hover:bg-[#00d4ff] rounded-full border border-[#333333] hover:border-[#00d4ff] text-[#00d4ff] hover:text-white transition-all duration-300 shadow-[0_8px_32px_rgba(0,212,255,0.1)] hover:shadow-[0_12px_40px_rgba(0,212,255,0.3)] hover:scale-110 hover:drop-shadow-[0_0_20px_rgba(0,212,255,0.5)]"
             >
               <Github className="w-6 h-6" />
             </a>
@@ -73,13 +83,13 @@ const Hero: React.FC = () => {
               href="https://linkedin.com/in/rajan-kumawat-90aa39286"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 bg-white/10 backdrop-blur-md hover:bg-white/20 rounded-full border border-white/20 hover:border-white/40 text-white hover:scale-110 transition-all duration-300"
+              className="p-4 bg-[#1a1a1a] hover:bg-[#00d4ff] rounded-full border border-[#333333] hover:border-[#00d4ff] text-[#00d4ff] hover:text-white transition-all duration-300 shadow-[0_8px_32px_rgba(0,212,255,0.1)] hover:shadow-[0_12px_40px_rgba(0,212,255,0.3)] hover:scale-110 hover:drop-shadow-[0_0_20px_rgba(0,212,255,0.5)]"
             >
               <Linkedin className="w-6 h-6" />
             </a>
             <a
               href="mailto:rajankumawat123@gmail.com"
-              className="p-3 bg-white/10 backdrop-blur-md hover:bg-white/20 rounded-full border border-white/20 hover:border-white/40 text-white hover:scale-110 transition-all duration-300"
+              className="p-4 bg-[#1a1a1a] hover:bg-[#00d4ff] rounded-full border border-[#333333] hover:border-[#00d4ff] text-[#00d4ff] hover:text-white transition-all duration-300 shadow-[0_8px_32px_rgba(0,212,255,0.1)] hover:shadow-[0_12px_40px_rgba(0,212,255,0.3)] hover:scale-110 hover:drop-shadow-[0_0_20px_rgba(0,212,255,0.5)]"
             >
               <Mail className="w-6 h-6" />
             </a>
@@ -87,8 +97,9 @@ const Hero: React.FC = () => {
 
           {/* Status Badge */}
           <div className="animate-fade-in-up delay-800">
-            <div className="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-green-500/20 to-blue-500/20 backdrop-blur-md rounded-full border border-green-500/30 text-green-300">
-              <span className="text-sm font-medium">
+            <div className="inline-flex items-center space-x-3 px-8 py-4 bg-[#1a1a1a] rounded-full border border-[#333333] text-[#b0b0b0] shadow-[0_8px_32px_rgba(0,212,255,0.1)] mb-12">
+              <div className="w-3 h-3 bg-[#00ff88] rounded-full animate-pulse drop-shadow-[0_0_10px_rgba(0,255,136,0.5)]"></div>
+              <span className="text-base font-medium">
                 Currently doing Internship in Multi-Technology Track via LinuxWorld (Learn & Build)
               </span>
             </div>
@@ -96,12 +107,7 @@ const Hero: React.FC = () => {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-white/50 rounded-full mt-2 animate-pulse"></div>
-        </div>
-      </div>
+      {/* Removed the scroll indicator */}
     </section>
   );
 };

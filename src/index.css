@@ -1,4 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --color-bg-primary: #190019;
+  --color-bg-accent: #2B124C;
+  --color-card: #522B5B;
+  --color-secondary: #854F6C;
+  --color-btn-primary: #DFB6B2;
+  --color-bg-light: #FBE4D8;
+  --color-text-main: #FBE4D8;
+  --color-text-accent: #DFB6B2;
+  --color-shadow: 0 4px 24px 0 rgba(25,0,25,0.12);
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -10,10 +23,10 @@
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(180deg, var(--color-bg-primary) 0%, var(--color-bg-accent) 100%);
+  color: var(--color-text-main);
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  transition: background 0.5s, color 0.3s;
 }
 
 html {
@@ -188,9 +201,14 @@ html {
 
 /* Button hover effects */
 .btn-gradient {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--color-3);
+  color: var(--color-white);
+  border-radius: 9999px;
+  font-weight: 600;
   position: relative;
   overflow: hidden;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: none;
 }
 
 .btn-gradient::before {
@@ -206,6 +224,11 @@ html {
 
 .btn-gradient:hover::before {
   left: 100%;
+}
+
+.btn-gradient:hover {
+  background: var(--color-4);
+  color: var(--color-black);
 }
 
 /* Loading animation */
@@ -237,3 +260,161 @@ html {
   background: #3b82f6;
   color: white;
 }
+
+/* Card backgrounds */
+.bg-white, .dark\:bg-slate-900, .dark\:bg-slate-800, .bg-gray-50 {
+  background: var(--color-2) !important;
+}
+
+/* Card border */
+.border-gray-200, .dark\:border-gray-700 {
+  border-color: var(--color-border) !important;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-4);
+  font-weight: 700;
+}
+
+/* Buttons */
+button, .btn-gradient {
+  background: var(--color-3);
+  color: var(--color-white);
+  border-radius: 9999px;
+  font-weight: 600;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: none;
+}
+button:hover, .btn-gradient:hover {
+  background: var(--color-4);
+  color: var(--color-black);
+}
+
+/* Links */
+a {
+  color: var(--color-3);
+  transition: color 0.2s;
+}
+a:hover {
+  color: var(--color-4);
+}
+
+/* Remove gradients and excessive colorfulness */
+.bg-gradient-to-br, .bg-gradient-to-r, .bg-gradient-to-l, .bg-gradient-to-t, .bg-gradient-to-b {
+  background: var(--color-2) !important;
+}
+
+/* Accent for icons */
+.text-blue-600, .dark\:text-blue-400, .text-purple-600, .dark\:text-purple-400, .text-green-400, .dark\:text-green-400, .text-yellow-400, .text-yellow-500, .text-teal-400, .text-teal-500, .text-pink-400, .text-pink-500, .text-red-400, .text-red-500, .text-orange-400, .text-orange-500 {
+  color: var(--color-4) !important;
+}
+
+/* Card shadow for premium look */
+.shadow-lg, .hover\:shadow-xl, .shadow-2xl {
+  box-shadow: 0 4px 16px 0 rgba(122, 24, 86, 0.10);
+}
+
+/* Scrollbar thumb */
+::-webkit-scrollbar-thumb, .dark ::-webkit-scrollbar-thumb {
+  background: var(--color-2);
+}
+
+/* Muted text */
+.text-gray-400, .text-gray-600, .dark\:text-gray-300, .dark\:text-gray-400 {
+  color: var(--color-muted) !important;
+}
+
+/* Accent elements (badges, CTAs, active states) */
+.badge, .cta, .active, .highlight {
+  background: var(--color-4) !important;
+  color: var(--color-black) !important;
+}
+
+/* Navbar, header, footer backgrounds */
+nav, header, footer {
+  background: var(--color-1) !important;
+}
+
+/* Ensure all text remains readable */
+* {
+  text-shadow: none !important;
+}
+
+section, .card, .rounded-xl, .rounded-lg {
+  background: var(--color-card);
+  box-shadow: var(--color-shadow);
+  border-radius: 1rem;
+  transition: background 0.4s, box-shadow 0.3s;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-bg-light);
+  letter-spacing: 0.01em;
+}
+
+button, .btn, .px-6, .py-2 {
+  background: var(--color-btn-primary);
+  color: var(--color-bg-primary);
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  box-shadow: 0 2px 8px 0 rgba(25,0,25,0.08);
+  transition: background 0.3s, color 0.3s, transform 0.2s;
+}
+button:hover, .btn:hover {
+  background: var(--color-secondary);
+  color: var(--color-bg-light);
+  transform: translateY(-2px) scale(1.03);
+}
+
+input, select, textarea {
+  background: var(--color-bg-light);
+  color: var(--color-bg-primary);
+  border: 1px solid var(--color-btn-primary);
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 0 2px var(--color-secondary);
+}
+
+a, .text-link {
+  color: var(--color-secondary);
+  transition: color 0.2s;
+}
+a:hover, .text-link:hover {
+  color: var(--color-btn-primary);
+}
+
+/* Card hover effect */
+.card, .rounded-xl, .rounded-lg {
+  transition: box-shadow 0.3s, transform 0.2s;
+}
+.card:hover, .rounded-xl:hover, .rounded-lg:hover {
+  box-shadow: 0 8px 32px 0 rgba(133,79,108,0.18);
+  transform: translateY(-4px) scale(1.02);
+}
+
+/* Text highlights */
+.mark, .highlight {
+  background: var(--color-btn-primary);
+  color: var(--color-bg-primary);
+  border-radius: 0.3em;
+  padding: 0.1em 0.3em;
+}
+
+/* Utility classes for backgrounds */
+.bg-primary { background: var(--color-bg-primary) !important; }
+.bg-accent { background: var(--color-bg-accent) !important; }
+.bg-card { background: var(--color-card) !important; }
+.bg-light { background: var(--color-bg-light) !important; }
+
+/* Utility classes for text */
+.text-main { color: var(--color-text-main) !important; }
+.text-accent { color: var(--color-text-accent) !important; }
+
+/* Smooth transitions for interactive elements */
+.transition-all { transition: all 0.3s cubic-bezier(.4,0,.2,1); }
