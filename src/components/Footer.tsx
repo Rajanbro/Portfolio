@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
               RK
             </div>
             <p className="text-[#b0b0b0] mb-6 leading-relaxed max-w-md">
-              AI enthusiast and aspiring MLOps engineer passionate about building intelligent solutions 
+              AI enthusiast and aspiring ML engineer passionate about building intelligent solutions 
               that make a difference in the world of technology.
             </p>
             <div className="flex space-x-4">

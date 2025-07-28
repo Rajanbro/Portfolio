@@ -11,7 +11,8 @@ import {
   Monitor,
   Smartphone,
   Globe,
-  BarChart3
+  BarChart3,
+  Mail
 } from 'lucide-react';
 
 interface Skill {
@@ -23,7 +24,10 @@ interface Skill {
 const skillCategories = {
   'Programming Languages': [
     { name: 'Python', icon: <Code className="w-6 h-6" />, category: 'blue' as const },
-    { name: 'C', icon: <Code className="w-6 h-6" />, category: 'blue' as const }
+    { name: 'C', icon: <Code className="w-6 h-6" />, category: 'blue' as const },
+    { name: 'Docker', icon: <Cloud className="w-6 h-6" />, category: 'purple' as const },
+    { name: 'Power BI', icon: <BarChart3 className="w-6 h-6" />, category: 'purple' as const },
+    { name: 'GitHub/Git', icon: <GitBranch className="w-6 h-6" />, category: 'purple' as const }
   ],
   'AI & Machine Learning': [
     { name: 'TensorFlow', icon: <Brain className="w-6 h-6" />, category: 'purple' as const },
@@ -40,11 +44,6 @@ const skillCategories = {
     { name: 'Seaborn', icon: <BarChart3 className="w-6 h-6" />, category: 'purple' as const },
     { name: 'Jupyter', icon: <BarChart3 className="w-6 h-6" />, category: 'purple' as const },
     { name: 'Data Analysis', icon: <BarChart3 className="w-6 h-6" />, category: 'purple' as const }
-  ],
-  'Tools & Technologies': [
-    { name: 'Docker', icon: <Cloud className="w-6 h-6" />, category: 'purple' as const },
-    { name: 'Power BI', icon: <BarChart3 className="w-6 h-6" />, category: 'purple' as const },
-    { name: 'GitHub/Git', icon: <GitBranch className="w-6 h-6" />, category: 'purple' as const }
   ]
 };
 
@@ -87,7 +86,7 @@ const Skills: React.FC = () => {
           {Object.entries(skillCategories).map(([category, skills]) => (
             <div key={category} className="bg-[#1a1a1a] rounded-2xl p-8 shadow-[0_8px_32px_rgba(0,212,255,0.1)] hover:shadow-[0_12px_40px_rgba(0,212,255,0.2)] transition-all duration-300 border border-[#333333] group">
               <h3 className="text-2xl font-bold text-white mb-6 group-hover:drop-shadow-[0_0_10px_rgba(0,212,255,0.3)] transition-all duration-300">
-                {category}
+                Programming Languages/Tools
               </h3>
               <div className="grid grid-cols-2 gap-4">
                 {skills.map((skill) => {
