@@ -25,6 +25,14 @@ const Contact: React.FC = () => {
     });
   };
 
+  const buildGmailLink = () => {
+    const subject = encodeURIComponent(formData.subject || 'Project inquiry');
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`
+    );
+    return `https://mail.google.com/mail/?view=cm&fs=1&to=rajankumawat123@gmail.com&su=${subject}&body=${body}`;
+  };
+
   return (
     <section id="contact" className="py-24 bg-[#0a0a0a]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -53,7 +61,9 @@ const Contact: React.FC = () => {
                   <div>
                     <p className="text-[#b0b0b0] font-medium">Email</p>
                     <a 
-                      href="mailto:rajankumawat123@gmail.com" 
+                      href="https://mail.google.com/mail/?view=cm&fs=1&to=rajankumawat123@gmail.com" 
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="text-[#00d4ff] hover:text-[#00b8e6] font-semibold transition-colors duration-300"
                     >
                       rajankumawat123@gmail.com
@@ -102,6 +112,14 @@ const Contact: React.FC = () => {
                   >
                     <Linkedin className="w-6 h-6" />
                   </a>
+                  <a
+                    href="https://mail.google.com/mail/?view=cm&fs=1&to=rajankumawat123@gmail.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-4 bg-[#1a1a1a] hover:bg-[#00d4ff] rounded-full border border-[#333333] hover:border-[#00d4ff] text-[#00d4ff] hover:text-white transition-all duration-300 shadow-[0_8px_32px_rgba(0,212,255,0.1)] hover:shadow-[0_12px_40px_rgba(0,212,255,0.3)] hover:scale-110"
+                  >
+                    <Mail className="w-6 h-6" />
+                  </a>
                 </div>
               </div>
 
@@ -128,7 +146,7 @@ const Contact: React.FC = () => {
                 <p className="text-[#b0b0b0]">Thank you for reaching out. I'll get back to you soon!</p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={e => e.preventDefault()} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-white font-semibold mb-2">
                     Name
@@ -193,13 +211,21 @@ const Contact: React.FC = () => {
                   />
                 </div>
 
-                <button
-                  type="submit"
-                  className="w-full px-8 py-4 bg-gradient-to-r from-[#00d4ff] to-[#00b8e6] text-white font-semibold rounded-lg shadow-[0_8px_32px_rgba(0,212,255,0.3)] hover:shadow-[0_12px_40px_rgba(0,212,255,0.5)] transform hover:scale-105 transition-all duration-300 border border-[#00d4ff]/30 flex items-center justify-center space-x-3 text-lg"
+                <a
+                  href={buildGmailLink()}
+                  className="w-full px-8 py-4 bg-gradient-to-r from-[#00d4ff] to-[#00b8e6] text-white font-semibold rounded-lg shadow-[0_8px_32px_rgba(0,212,255,0.3)] hover:shadow-[0_12px_40px_rgba(0,212,255,0.5)] transform hover:scale-105 transition-all duration-300 border border-[#00d4ff]/30 flex items-center justify-center space-x-3 text-lg text-center"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={e => {
+                    if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+                      e.preventDefault();
+                      alert('Please fill out all fields before sending your message.');
+                    }
+                  }}
                 >
                   <Send className="w-6 h-6" />
                   <span>Send Message</span>
-                </button>
+                </a>
               </form>
             )}
           </div>

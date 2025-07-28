@@ -100,7 +100,7 @@ const About: React.FC = () => {
                 <div className="text-[#b0b0b0] font-bold">Projects Completed</div>
               </div>
               <div className="bg-[#1a1a1a] rounded-2xl p-6 text-center shadow-[0_8px_32px_rgba(0,212,255,0.1)] hover:shadow-[0_12px_40px_rgba(0,212,255,0.2)] transition-all duration-300 border border-[#333333]">
-                <div className="text-4xl font-bold text-[#00ff88] mb-3 drop-shadow-[0_0_10px_rgba(0,255,136,0.5)]">4+</div>
+                <div className="text-4xl font-bold text-[#00ff88] mb-3 drop-shadow-[0_0_10px_rgba(0,255,136,0.5)]">10+</div>
                 <div className="text-[#b0b0b0] font-bold">Certifications</div>
               </div>
             </div>

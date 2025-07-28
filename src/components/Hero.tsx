@@ -24,6 +24,7 @@ const Hero: React.FC = () => {
             <h1
               className="text-4xl md:text-6xl font-extrabold text-center mb-6 text-white drop-shadow-[0_0_20px_#00d4ff]"
               style={{
+                marginTop: '0.5cm',
                 letterSpacing: '0.04em',
                 textShadow: '0 0 16px #00d4ff, 0 0 4px #00ff88, 0 0 8px #ffffff',
                 filter: 'drop-shadow(0 0 8px #00d4ff)'
@@ -57,10 +58,11 @@ const Hero: React.FC = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 animate-fade-in-up delay-400">
             <button
               onClick={() => scrollToSection('#projects')}
-              className="group px-10 py-4 bg-gradient-to-r from-[#00d4ff] to-[#00b8e6] text-white font-semibold rounded-lg shadow-[0_8px_32px_rgba(0,212,255,0.3)] hover:shadow-[0_12px_40px_rgba(0,212,255,0.5)] transform hover:scale-105 transition-all duration-300 flex items-center space-x-3 text-lg border border-[#00d4ff]/30 hover:border-[#00d4ff]/60"
+              className="group px-10 py-4 bg-gradient-to-r from-[#00d4ff] to-[#00b8e6] text-white font-semibold rounded-lg shadow-[0_4px_16px_rgba(0,212,255,0.18)] drop-shadow-[0_0_8px_#00d4ff] transform transition-all duration-300 flex items-center space-x-3 text-lg border border-[#00d4ff]/30"
+              style={{ boxShadow: '0 0 12px 2px #00d4ff55, 0 0 24px 4px #00b8e655' }}
             >
               <span>Explore My Work</span>
-              <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-6 h-6 transition-transform" />
             </button>
             <a
               href="https://drive.google.com/file/d/1FmCTASrjjfpw4FFJR0kIrPpR32dPVNXm/view?usp=drive_link"
@@ -92,7 +94,9 @@ const Hero: React.FC = () => {
               <Linkedin className="w-6 h-6" />
             </a>
             <a
-              href="mailto:rajankumawat123@gmail.com"
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=rajankumawat123@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
               className="p-4 bg-[#1a1a1a] hover:bg-[#00d4ff] rounded-full border border-[#333333] hover:border-[#00d4ff] text-[#00d4ff] hover:text-white transition-all duration-300 shadow-[0_8px_32px_rgba(0,212,255,0.1)] hover:shadow-[0_12px_40px_rgba(0,212,255,0.3)] hover:scale-110 hover:drop-shadow-[0_0_20px_rgba(0,212,255,0.5)]"
             >
               <Mail className="w-6 h-6" />
@@ -104,7 +108,7 @@ const Hero: React.FC = () => {
             <div className="inline-flex items-center space-x-3 px-8 py-4 bg-[#1a1a1a] rounded-full border border-[#333333] text-[#b0b0b0] shadow-[0_8px_32px_rgba(0,212,255,0.1)] mb-12">
               <div className="w-3 h-3 bg-[#00ff88] rounded-full animate-pulse drop-shadow-[0_0_10px_rgba(0,255,136,0.5)]"></div>
               <span className="text-base font-medium">
-                Currently doing Internship in Multi-Technology Track via LinuxWorld (Learn & Build)
+                Currently doing Internship in Multi-Technology Track via <span className="font-bold" style={{color: '#ff0000'}}>LinuxWorld</span> (Learn & Build)
               </span>
             </div>
           </div>

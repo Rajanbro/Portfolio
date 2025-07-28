@@ -1,12 +1,26 @@
-import React, { useState, useMemo, useRef } from 'react';
+import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { ExternalLink, Github, Search, Filter, Bot, Shield, DollarSign, Home, BarChart3, Brain, X } from 'lucide-react';
+
+// Add CSS for blinking border animation
+const borderGlowAnimation = `
+  @keyframes borderGlow {
+    0%, 100% {
+      border-color: rgba(255, 0, 128, 0.6);
+      box-shadow: 0 0 20px rgba(255, 0, 128, 0.3), 0 0 40px rgba(255, 0, 128, 0.1);
+    }
+    50% {
+      border-color: rgba(255, 0, 128, 1);
+      box-shadow: 0 0 30px rgba(255, 0, 128, 0.6), 0 0 60px rgba(255, 0, 128, 0.3);
+    }
+  }
+`;
 
 interface Project {
   id: number;
   title: string;
   description: string;
   technologies: string[];
-  category: 'AI/ML' | 'Web Dev' | 'DevOps' | 'Data Science' | 'Machine Learning' | 'Fintech' | 'Business Intelligence' | 'Communication' | 'Data Visualization' | 'Social Media' | 'Automation' | 'Science';
+  category: 'AI/ML' | 'Web Dev' | 'DevOps' | 'Data Science' | 'Data Science/ML' | 'Machine Learning' | 'ML' | 'Fintech' | 'Business Intelligence' | 'Communication' | 'Data Visualization' | 'Social Media' | 'Automation' | 'Science' | 'Game App';
   githubUrl: string;
   liveUrl?: string;
   icon: React.ComponentType<any>;
@@ -38,8 +52,8 @@ const projects: Project[] = [
     id: 3,
     title: 'Loan Approval System',
     description: 'Random Forest-powered loan approval prediction system with an elegant web interface for financial institutions.',
-    technologies: ['Python', 'Random Forest', 'Flask', 'Data Analytics', 'Web Development'],
-    category: 'Fintech',
+    technologies: ['Python', 'Random Forest', 'Flask', 'Machine Learning', 'Financial Analysis'],
+    category: 'ML',
     githubUrl: 'https://github.com/Rajanbro/Loan_Approval_System',
     icon: DollarSign,
     featured: true
@@ -96,7 +110,7 @@ const projects: Project[] = [
   },
   {
     id: 9,
-    title: 'Visualizing_Err_HousePriceData',
+    title: 'Visualizing Err in Dataset',
     description: 'Python project for visualizing errors in house price prediction datasets. Useful for data analysis and model improvement.',
     technologies: ['Python', 'Data Visualization', 'Analytics'],
     category: 'Data Visualization',
@@ -129,7 +143,7 @@ const projects: Project[] = [
     title: 'Salary_Predictor',
     description: 'Machine learning model to predict salary based on various factors using regression algorithms.',
     technologies: ['Python', 'Machine Learning', 'Regression', 'Data Science'],
-    category: 'Data Science',
+    category: 'Data Science/ML',
     githubUrl: 'https://github.com/Rajanbro/Salary_Predictor',
     icon: DollarSign,
     featured: false
@@ -338,8 +352,8 @@ const projects: Project[] = [
     id: 33,
     title: 'Moon_Gravity',
     description: 'Physics simulation project for calculating and visualizing moon gravity effects.',
-    technologies: ['Python', 'Physics', 'Simulation', 'Data Visualization'],
-    category: 'Science',
+    technologies: ['Python', 'Physics', 'Simulation', 'Gravity'],
+    category: 'Game App',
     githubUrl: 'https://github.com/Rajanbro/Moon_Gravity',
     icon: BarChart3,
     featured: false
@@ -412,46 +426,42 @@ const Projects: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [showFilter, setShowFilter] = useState(false);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [showAllProjects, setShowAllProjects] = useState(false);
   const filterRef = useRef<HTMLDivElement>(null);
 
-  // Close filter dropdown on outside click
-  React.useEffect(() => {
+  useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (filterRef.current && !filterRef.current.contains(event.target as Node)) {
         setShowFilter(false);
       }
     }
-    if (showFilter) {
-      document.addEventListener('mousedown', handleClickOutside);
-    } else {
-      document.removeEventListener('mousedown', handleClickOutside);
-    }
+
+    document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [showFilter]);
+  }, []);
 
   const handleCategoryChange = (cat: string) => {
-    setSelectedCategories((prev) =>
-      prev.includes(cat) ? prev.filter((c) => c !== cat) : [...prev, cat]
+    setSelectedCategories(prev => 
+      prev.includes(cat) ? prev.filter(c => c !== cat) : [...prev, cat]
     );
   };
 
   const clearFilters = () => setSelectedCategories([]);
 
   const filteredProjects = useMemo(() => {
-    return projects.filter(project => {
-      const matchesSearch = project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        project.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        project.technologies.some(tech => tech.toLowerCase().includes(searchTerm.toLowerCase()));
-      const matchesCategory =
-        selectedCategories.length === 0 || selectedCategories.includes(project.category);
-      return matchesSearch && matchesCategory;
-    });
-  }, [searchTerm, selectedCategories]);
+    if (selectedCategories.length === 0) return projects;
+    return projects.filter(project => selectedCategories.includes(project.category));
+  }, [selectedCategories]);
 
-  const projectsToShow = filteredProjects.slice(0, 9);
+  const projectsToShow = showAllProjects ? filteredProjects : filteredProjects.slice(0, 9);
+
+  const toggleShowAll = () => {
+    setShowAllProjects(!showAllProjects);
+  };
 
   return (
     <section id="projects" className="py-24 bg-[#0a0a0a]">
+      <style>{borderGlowAnimation}</style>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-20">
           <h2 className="text-5xl md:text-6xl font-bold text-white mb-6 drop-shadow-[0_0_20px_rgba(0,212,255,0.3)]">
@@ -595,26 +605,18 @@ const Projects: React.FC = () => {
           })}
         </div>
 
-        {/* Show All Projects Button */}
+        {/* Toggle Show All/Less Button */}
         {filteredProjects.length > 9 && (
           <div className="text-center mt-12">
             <button 
-              onClick={() => {}}
-              className="px-10 py-4 bg-gradient-to-r from-[#ff0080] to-[#e60073] text-white font-semibold rounded-lg shadow-[0_8px_32px_rgba(255,0,128,0.3)] hover:shadow-[0_12px_40px_rgba(255,0,128,0.5)] transform hover:scale-105 transition-all duration-300 border border-[#ff0080]/30"
+              onClick={toggleShowAll}
+              className="px-12 py-5 bg-gradient-to-r from-[#ff0080] to-[#e60073] text-white font-semibold rounded-xl shadow-[0_8px_32px_rgba(255,0,128,0.3)] hover:shadow-[0_12px_40px_rgba(255,0,128,0.5)] transform hover:scale-105 transition-all duration-300 border-2 border-[#ff0080] hover:border-[#ff0080]/60 text-2xl"
+              style={{
+                boxShadow: '0 0 20px rgba(255, 0, 128, 0.3), 0 0 40px rgba(255, 0, 128, 0.1)',
+                animation: 'glow 2s ease-in-out infinite alternate, borderGlow 1.5s ease-in-out infinite'
+              }}
             >
-              Show All Projects ({filteredProjects.length})
-            </button>
-          </div>
-        )}
-
-        {/* Show Less Button */}
-        {filteredProjects.length > 9 && (
-          <div className="text-center mt-12">
-            <button 
-              onClick={() => {}}
-              className="px-10 py-4 bg-gradient-to-r from-[#00d4ff] to-[#00b8e6] text-white font-semibold rounded-lg shadow-[0_8px_32px_rgba(0,212,255,0.3)] hover:shadow-[0_12px_40px_rgba(0,212,255,0.5)] transform hover:scale-105 transition-all duration-300 border border-[#00d4ff]/30"
-            >
-              Show Less
+              {showAllProjects ? 'Show Less' : `Show All Projects (${filteredProjects.length})`}
             </button>
           </div>
         )}
