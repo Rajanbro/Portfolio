@@ -467,9 +467,6 @@ const Projects: React.FC = () => {
           <h2 className="text-5xl md:text-6xl font-bold text-white mb-6 drop-shadow-[0_0_20px_rgba(0,212,255,0.3)]">
             My Projects
           </h2>
-          <p className="text-xl text-[#b0b0b0] max-w-3xl mx-auto leading-relaxed font-medium">
-            A collection of innovative projects showcasing my expertise in AI/ML, data science, and full-stack development
-          </p>
         </div>
 
         {/* Search and Filter */}
